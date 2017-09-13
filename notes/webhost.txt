@@ -1,10 +1,10 @@
 https://www.000webhost.com
 
 DB Name
-loanmngr_db
+id2902849_loanmngr_db
 
 username
-loanmngr
+id2902849_loanmngr
 
 password
 Ateneo201011524
