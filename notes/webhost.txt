@@ -1,0 +1,10 @@
+https://www.000webhost.com
+
+DB Name
+loanmngr_db
+
+username
+loanmngr
+
+password
+Ateneo201011524
