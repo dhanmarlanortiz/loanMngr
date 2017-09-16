@@ -22,9 +22,9 @@ class Login extends CI_Controller {
 	{
 		$this->load->database();
 		$this->load->model('Main_model');
-
 		$data['query'] = $this->Main_model->getClients();
-
-		$this->load->view('index.php', $data);
+		print_r($data['query']);
+die;
+		$this->load->view('index.php');
 	}
 }

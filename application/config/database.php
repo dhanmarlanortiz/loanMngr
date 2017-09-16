@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'loanmngr.000webhostapp.com',
-	'username' => 'id2902849_loanmngr',
-	'password' => 'id2902849_loanmngr_pw',
-	'database' => 'id2902849_loanmngr_db',
+	'hostname' => 'sql12.freemysqlhosting.net',
+	'username' => 'sql12194450',
+	'password' => 'CHpgjQE2IC',
+	'database' => 'sql12194450',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
