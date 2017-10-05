@@ -5,8 +5,8 @@ class Main extends CI_Controller {
 
     public function index() {
         $this->load->model('Main_model');
-        $data['query'] = $this->Main_model->getClients();
-        $data['title'] = "loanMngr | Clients";
+        $data['title'] = "Clients";
+        $data['clients'] = $this->Main_model->getClients();
         $this->load->view('header.php', $data);
         $this->load->view('clients.php', $data);
         $this->load->view('footer.php');
