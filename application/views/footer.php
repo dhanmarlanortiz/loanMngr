@@ -1,7 +1,4 @@
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="<?php echo base_url(); ?>assets/js/jquery-3.2.1.slim.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-    </body>
+    <script src="<?=base_url('assets/bootstrap/js/jquery.min.js')?>"></script>
+    <script src="<?=base_url('assets/bootstrap/js/bootstrap.min.js')?>"></script>
+  </body>
 </html>

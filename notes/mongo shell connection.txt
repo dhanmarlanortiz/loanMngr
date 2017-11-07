@@ -1,1 +1,0 @@
-mongo "mongodb://loanmngr-shard-00-00-pvwc6.mongodb.net:27017,loanmngr-shard-00-01-pvwc6.mongodb.net:27017,loanmngr-shard-00-02-pvwc6.mongodb.net:27017/test?replicaSet=loanMngr-shard-0" --authenticationDatabase admin --ssl --username admin --password <PASSWORD>
