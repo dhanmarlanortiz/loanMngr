@@ -1,25 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class Users extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('User_model');
-
+		$this->load->helper("myHelper");
 		if(null === $this->session->userdata('uid')) {
 			header("Location: ".site_url('welcome?fa=1')."");
 		}
 	}
 
-	public function index() {}
-
-	public function logout() {
-		session_destroy();
-		header("Location: ".site_url('welcome')."?lo=1");
-	}
-
-	public function user_accounts() {
+	public function index() {
 		$default_username = "";
 		$default_email = "";
 
@@ -38,7 +31,7 @@ class User extends CI_Controller {
 								$this->input->post('password')
 							);
 				if($data['create_user'] == 1) { // Database insert success, refresh page, display alert msg, clear fields
-					header("Location: ".site_url('user/user_accounts')."?create_alert=Success");
+					header("Location: ".site_url('users')."?create_alert=Success");
 				}else { // Database insert failed, display alert msg, repopulate fields
 					$data['create_alert'] = "Failed! Please try again.";
 					$default_username = set_value('username');
@@ -49,7 +42,7 @@ class User extends CI_Controller {
 				$default_email = set_value('email');
 			}
 		}else if(null !== $this->input->post('reset')) {
-			header("Location: ".site_url('user/user_accounts')."");
+			header("Location: ".site_url('users')."");
 		}
 
 		/* Create form */
@@ -95,8 +88,7 @@ class User extends CI_Controller {
 						'class' => 'btn btn-cyan', 
 						'style' => ''
 					);
-		$data['form'] =  form_open('user/user_accounts', $form)
-						.heading('User Accounts', 3, 'class="section-title"')
+		$data['form'] =  form_open('users', $form)
 						.form_input($username)
 						.form_input($email)
 						.form_input($password1)
@@ -112,37 +104,49 @@ class User extends CI_Controller {
 		$this->table->set_heading('Username', 'Email', '&nbsp;');
 		if(null !== $list) {
 			foreach ($list as $l):
-				$this->table->add_row($l['username'], $l['email'], '<a href="'.site_url().'/user/profile/'.$l['id'].'">View</a>');
+				$this->table->add_row($l['username'], $l['email'], '<a href="'.site_url().'/users/profile/'.$l['id'].'">View</a>');
 			endforeach;
 		}
 
 		$template = array('table_open' => '<table class="table table-striped myTable">');
 
 		$this->table->set_template($template);
-		$data['user_table'] = $this->table->generate();
+		$data['table'] = $this->table->generate();
+		$data['breadcrumbs'] =  breadcrumbs(array('User Accounts'));
+        $data['table_header'] = "List of users";
+        $data['form_header'] = "Add new user";
+        $data['navbar_left'] = navbar_left($this->uri->segment(1));
 
-		$this->load->view('header');
-		$this->load->view('navbar');
-		$this->load->view('users/user-accounts', $data);
-		$this->load->view('footer');
-	} // user_accounts end
+        $this->load->view('header');
+        $this->load->view('generic-page', $data);
+        $this->load->view('footer');
+	}
+
+    public function logout() {
+		session_destroy();
+		header("Location: ".site_url('welcome')."?lo=1");
+	}
 
 	public function profile($id) {
 		$profile = $this->User_model->get_user($id);
-		
+		$default_username = $profile['username'];
 		$this->table->add_row(array('ID', $profile['id']));
-		$this->table->add_row(array('Username', $profile['username']));
+		$this->table->add_row(array('Username', $default_username));
 		$this->table->add_row(array('Email', $profile['email']));
-		$this->table->add_row(array('&#x270e;', anchor(site_url().'/user/update/'.$profile['id'], 'Edit', 'title="Edit"') ));
+		$this->table->add_row(array('&#x270e;', anchor(site_url().'/users/update/'.$profile['id'], 'Edit', 'title="Edit"') ));
 
 		$template = array('table_open' => '<table class="table table-striped myTable">');
 		$this->table->set_template($template);
-		$data['profile'] = $this->table->generate();
+		$data['form'] = $this->table->generate();
 
-		$this->load->view('header');
-		$this->load->view('navbar');
-		$this->load->view('users/profile', $data);
-		$this->load->view('footer');
+		$data['breadcrumbs'] =  breadcrumbs(array('users', $default_username));
+        $data['table_header'] = "";
+        $data['form_header'] = $default_username;
+        $data['navbar_left'] = navbar_left($this->uri->segment(1));
+        
+        $this->load->view('header');
+        $this->load->view('generic-page', $data);
+        $this->load->view('footer');
 	}
 
 	public function update($id) {
@@ -180,7 +184,7 @@ class User extends CI_Controller {
 								$this->input->post('user_id')
 							);
 				if($data['update_user'] == 1) { // Database update success, refresh page, display alert msg, clear fields
-					header("Location: ".site_url('user/profile/').$id."?update_alert=Success");
+					header("Location: ".site_url('users/profile/').$id."?update_alert=Success");
 				}else { // Database update failed, display alert msg, repopulate fields
 					$data['update_user'] = "Failed! Please try again.";
 					$default_username = set_value('username');
@@ -191,7 +195,7 @@ class User extends CI_Controller {
 				$default_email = set_value('email');
 			}
 		}else if(null !== $this->input->post('reset')) {
-			header("Location: ".site_url('user/profile/').$id."");
+			header("Location: ".site_url('users/profile/').$id."");
 		}
 
 		$username = array(
@@ -228,25 +232,29 @@ class User extends CI_Controller {
 	        'class' => 'btn-link'
 		);
 
-		$this->table->add_row(array(form_open('user/update/'.$profile['id'].'').'ID', $profile['id']));
+		$this->table->add_row(array(form_open('users/update/'.$profile['id'].'').'ID', $profile['id']));
 		$this->table->add_row(array('Username', form_input($username)));
 		$this->table->add_row(array('Email', form_input($email)));
 		$this->table->add_row(array('Password', form_input($password)));
 		$this->table->add_row(array('Password', form_input($password2)));
 		$this->table->add_row(array('&#x270e;', 
-								anchor(site_url().'/user/profile/'.$id, 'Cancel', 'title="Cancel"')."&nbsp;&nbsp;|&nbsp;&nbsp;". 
-								anchor(site_url().'/user/update/'.$id, 'Reset', 'title="Reset"')."&nbsp;&nbsp;|". 
+								anchor(site_url().'/users/profile/'.$id, 'Cancel', 'title="Cancel"')."&nbsp;&nbsp;|&nbsp;&nbsp;". 
+								anchor(site_url().'/users/update/'.$id, 'Reset', 'title="Reset"')."&nbsp;&nbsp;|". 
 								form_submit($save).form_input($user_id).
 								form_close()
 							));
 		
 		$template = array('table_open' => '<table class="table table-striped myTable">');
 		$this->table->set_template($template);
-		$data['profile'] = $this->table->generate();
+		$data['form'] = $this->table->generate();
 
-		$this->load->view('header');
-		$this->load->view('navbar');
-		$this->load->view('users/profile', $data);
-		$this->load->view('footer');
+		$data['breadcrumbs'] =  breadcrumbs(array('users', $default_username));
+        $data['table_header'] = "";
+        $data['form_header'] = $default_username;
+        $data['navbar_left'] = navbar_left($this->uri->segment(1));
+        
+        $this->load->view('header');
+        $this->load->view('generic-page', $data);
+        $this->load->view('footer');
 	}
-
+}

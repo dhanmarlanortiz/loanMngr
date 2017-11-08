@@ -88,41 +88,57 @@
   background-color: #3f939e;
   border-bottom: 0;
   font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-/* line 81, ../sass/main.scss */
+/* line 83, ../sass/main.scss */
 .myTable tbody tr td {
   border-top: 0;
   font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-/* line 87, ../sass/main.scss */
+/* line 91, ../sass/main.scss */
 .menu-bar {
-  background-color: #136396;
+  background-color: #3f939e;
   border: none;
   border-radius: 0;
 }
-/* line 93, ../sass/main.scss */
+/* line 97, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a {
   color: #fff;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
   opacity: 0.7;
+  text-transform: capitalize;
 }
-/* line 98, ../sass/main.scss */
+/* line 103, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a:hover, .menu-bar .menu-group .menu-list a:focus {
   color: #fff;
   opacity: 0.9;
 }
-/* line 103, ../sass/main.scss */
+/* line 108, ../sass/main.scss */
 .menu-bar .menu-group .menu-list.active a {
   opacity: 1;
   background-color: transparent;
 }
-/* line 112, ../sass/main.scss */
+/* line 117, ../sass/main.scss */
 .menu-bar .navbar-header .navbar-brand {
   color: #fff;
 }
-/* line 115, ../sass/main.scss */
+/* line 120, ../sass/main.scss */
 .menu-bar .navbar-header .icon-bar {
   background-color: #fff;
+}
+
+/* line 126, ../sass/main.scss */
+#navbar {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* line 132, ../sass/main.scss */
+.breadcrumb {
+  text-transform: capitalize;
 }

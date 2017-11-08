@@ -77,15 +77,19 @@ $cyan: #3f939e;
         background-color: $cyan;
         border-bottom: 0;
         font-family: $helvetica;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     tbody tr td {
         border-top: 0;
         font-family: $helvetica;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
 .menu-bar {
-    background-color: $blue;
+    background-color: $cyan;
     border: none;
     border-radius: 0;
     .menu-group {
@@ -95,6 +99,7 @@ $cyan: #3f939e;
                 font-size: 14px;
                 font-family: $helvetica;
                 opacity: 0.7;
+                text-transform: capitalize;
                 &:hover, &:focus {
                     color: #fff;
                     opacity: 0.9;
@@ -117,3 +122,14 @@ $cyan: #3f939e;
         }
     }
 }
+
+#navbar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.breadcrumb {
+    text-transform: capitalize;
+}
+
