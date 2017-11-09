@@ -29,7 +29,7 @@ class Welcome extends CI_Controller {
 		}
 		
 		/* Create login form */
-		$form =  array('class' => 'form-horizontal login-form', );
+		$form =  array('class' => 'form-horizontal login-form', 'autocomplete' => 'off' );
 		$email = array('name' => 'email', 
 					'id' => 'email', 
 					'value' => set_value('email'), 'maxlength' => '50', 

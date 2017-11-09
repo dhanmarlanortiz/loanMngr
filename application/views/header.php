@@ -9,6 +9,7 @@
 
     <link href="<?=base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?=base_url('assets/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet">
+    <link href="<?=base_url('assets/datatables/datatables.min.css')?>" rel="stylesheet">
     <link href="<?=base_url('assets/styles/css/main.css')?>" rel="stylesheet">
   </head>
   <body>

@@ -50,6 +50,15 @@
                         echo $this->input->get('create_alert');
                     }
                 }
+                if(isset($form2)) {
+                    echo $form2;
+                    echo validation_errors();
+                    if(isset($form2_alert)) {
+                        echo $form2_alert;
+                    }else if(null !== $this->input->get('form2_alert')) {
+                        echo $this->input->get('form2_alert');
+                    }
+                }
             ?>
         </div>
         <div class="col-sm-6 col-md-8">

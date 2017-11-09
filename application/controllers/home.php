@@ -14,7 +14,7 @@ class Home extends CI_Controller {
     }
 
     public function index() {
-        $data['breadcrumbs'] =  breadcrumbs(array('home'));
+        $data['breadcrumbs'] = breadcrumbs(array('home'));
         $data['navbar_left'] = navbar_left($this->uri->segment(1));
         $this->load->view('header');
         $this->load->view('generic-page', $data);

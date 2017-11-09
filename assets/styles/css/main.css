@@ -80,7 +80,7 @@
   border: dashed 1px #3f939e;
   margin-top: 15px;
 }
-/* line 73, ../sass/main.scss */
+/* line 75, ../sass/main.scss */
 .myTable thead tr th {
   font-size: 16px;
   color: #fff;
@@ -91,7 +91,7 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-/* line 83, ../sass/main.scss */
+/* line 85, ../sass/main.scss */
 .myTable tbody tr td {
   border-top: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -99,13 +99,13 @@
   padding-right: 10px;
 }
 
-/* line 91, ../sass/main.scss */
+/* line 93, ../sass/main.scss */
 .menu-bar {
   background-color: #3f939e;
   border: none;
   border-radius: 0;
 }
-/* line 97, ../sass/main.scss */
+/* line 99, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a {
   color: #fff;
   font-size: 14px;
@@ -113,32 +113,32 @@
   opacity: 0.7;
   text-transform: capitalize;
 }
-/* line 103, ../sass/main.scss */
+/* line 105, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a:hover, .menu-bar .menu-group .menu-list a:focus {
   color: #fff;
   opacity: 0.9;
 }
-/* line 108, ../sass/main.scss */
+/* line 110, ../sass/main.scss */
 .menu-bar .menu-group .menu-list.active a {
   opacity: 1;
   background-color: transparent;
 }
-/* line 117, ../sass/main.scss */
+/* line 119, ../sass/main.scss */
 .menu-bar .navbar-header .navbar-brand {
   color: #fff;
 }
-/* line 120, ../sass/main.scss */
+/* line 122, ../sass/main.scss */
 .menu-bar .navbar-header .icon-bar {
   background-color: #fff;
 }
 
-/* line 126, ../sass/main.scss */
+/* line 128, ../sass/main.scss */
 #navbar {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 132, ../sass/main.scss */
+/* line 134, ../sass/main.scss */
 .breadcrumb {
   text-transform: capitalize;
 }
