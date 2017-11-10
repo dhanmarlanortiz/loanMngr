@@ -88,8 +88,21 @@ $cyan: #3f939e;
         padding-left: 10px;
         padding-right: 10px;
     }
-}
-
+    &.client-info-tbl, &.client-new-trans {
+        td {
+            &:nth-child(1) {
+                font-weight: 600;
+            }
+        }
+    }
+    &#client-transactions-table {
+        td, th {
+            &:nth-child(3), &:nth-child(4) {
+                text-align: right;
+            }
+        }
+    }
+ }
 .menu-bar {
     background-color: $cyan;
     border: none;
@@ -124,14 +137,10 @@ $cyan: #3f939e;
         }
     }
 }
-
 #navbar {
     padding-left: 0;
     padding-right: 0;
 }
-
-
 .breadcrumb {
     text-transform: capitalize;
 }
-

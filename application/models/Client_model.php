@@ -17,33 +17,28 @@ class Client_model extends CI_Model {
 		return $result;
 	}
 
-	/* Create user */
-	public function create_user($username, $email, $password) {
-		$encrypt = password_hash($password, PASSWORD_DEFAULT); //encrypt password
+	public function new_transaction($client_id) {
+		$u_in = $this->input->post();
 		$data = array(
-			'username' => $username,
-			'email' => $email,
-			'password' => $encrypt
+			'client_id' => $client_id,
+			'date' => $u_in['date'],
+			'amount' => $u_in['amount'],
+			'charge' => $u_in['charge'],
+			'comment' => $u_in['comment']
 		);
-		$query = $this->db->insert('accounts', $data);
+		$query = $this->db->insert('transactions', $data);
 		return $this->db->affected_rows();
 	}
 
-	/* update user */
-	public function update_user($username, $email, $password, $id) {
-		echo $username."<br>";
-		echo $email."<br>";
-		echo $password."<br>";
-		echo $id."<br>";
+	public function get_transactions($client_id) {
+		$query = $this->db->get_where('transactions', array('client_id' => $client_id));
+		$result = $query->result_array();
+		return $result;
+	}
 
-		$encrypt = password_hash($password, PASSWORD_DEFAULT); //encrypt password
-		$data = array(
-			'username' => $username,
-			'email' => $email,
-			'password' => $encrypt
-		);
-		$query = $this->db->update('accounts', $data, array('id' => $id));
-		echo $this->db->affected_rows();
-		return $this->db->affected_rows();
+	public function transaction($t_id) {
+		$query = $this->db->get_where('transactions', array('id' => $t_id));
+		$result = $query->result_array();
+		return $result;
 	}
 }
