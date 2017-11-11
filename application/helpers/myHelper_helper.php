@@ -37,3 +37,20 @@ function navbar_left($controller) {
 
     return $menu;
 }
+
+function client_information($c_id) {
+    $profile = $this->Client_model->get_clients($c_id);
+    $fullname = $profile['firstname']." ".$profile['lastname'];
+
+    $this->table->set_heading('Client Information');
+    $this->table->add_row(array('ID', $profile['id']));
+    $this->table->add_row(array('Last Name', $profile['lastname']));
+    $this->table->add_row(array('First Name', $profile['firstname']));
+    $this->table->add_row(array('Address', $profile['address']));
+    $this->table->add_row(array('Telephone', $profile['telephone']));
+    $template = array('table_open' => '<table class="table table-condensed table-striped myTable client-info-tbl">', 'heading_cell_start' => '<th colspan="2">');
+    $this->table->set_template($template);
+    $table = $this->table->generate();
+
+    return $table;
+}

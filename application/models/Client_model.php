@@ -24,8 +24,10 @@ class Client_model extends CI_Model {
 			'date' => $u_in['date'],
 			'amount' => $u_in['amount'],
 			'charge' => $u_in['charge'],
-			'comment' => $u_in['comment']
+			'comment' => $u_in['comment'],
+			'type' => $u_in['type']
 		);
+
 		$query = $this->db->insert('transactions', $data);
 		return $this->db->affected_rows();
 	}
@@ -39,6 +41,12 @@ class Client_model extends CI_Model {
 	public function transaction($t_id) {
 		$query = $this->db->get_where('transactions', array('id' => $t_id));
 		$result = $query->result_array();
+		return $result;
+	}
+
+	public function get_loan($t_id) {
+		$query = $this->db->get_where('transactions', array('id' => $t_id, 'type' => 'Loan'));
+		$result = $query->row_array();
 		return $result;
 	}
 }

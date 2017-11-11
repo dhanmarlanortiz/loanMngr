@@ -99,7 +99,7 @@
   padding-right: 10px;
 }
 /* line 93, ../sass/main.scss */
-.myTable.client-info-tbl td:nth-child(1), .myTable.client-new-trans td:nth-child(1) {
+.myTable.client-info-tbl td:nth-child(1), .myTable.client-new-loan td:nth-child(1), .myTable.loan-info-tbl td:nth-child(1) {
   font-weight: 600;
 }
 /* line 100, ../sass/main.scss */

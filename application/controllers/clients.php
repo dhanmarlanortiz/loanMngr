@@ -35,6 +35,37 @@ class Clients extends CI_Controller {
         $this->load->view('footer');
     }
 
+    function client_information($c_id) {
+        $profile = $this->Client_model->get_clients($c_id);
+        $fullname = $profile['firstname']." ".$profile['lastname'];
+        
+        $this->table->set_heading('Client Information');
+        $this->table->add_row(array('ID', $profile['id']));
+        $this->table->add_row(array('Last Name', $profile['lastname']));
+        $this->table->add_row(array('First Name', $profile['firstname']));
+        $this->table->add_row(array('Address', $profile['address']));
+        $this->table->add_row(array('Telephone', $profile['telephone']));
+        $template = array('table_open' => '<table class="table table-condensed table-striped myTable client-info-tbl">', 'heading_cell_start' => '<th colspan="2">');
+        $this->table->set_template($template);
+        $table =  $this->table->generate();
+        
+        return $table;
+    }
+
+    function loan_information($t_id) {
+        $loan = $this->Client_model->get_loan($t_id);
+        $this->table->set_heading('Loan Information');
+        $this->table->add_row(array('Transaction No.', $loan['id']));
+        $this->table->add_row(array('Date', $loan['date']));
+        $this->table->add_row(array('Amount', "P ".number_format($loan['amount'],2)));
+        $this->table->add_row(array('Charge', $loan['charge'].'%'));
+        $template = array('table_open' => '<table class="table table-condensed table-striped myTable loan-info-tbl">', 'heading_cell_start' => '<th colspan="2">');
+        $this->table->set_template($template);
+        $table = $this->table->generate();
+
+        return $table;
+    }
+
     public function profile($id) {
         $profile = $this->Client_model->get_clients($id);
         $fullname = $profile['firstname']." ".$profile['lastname'];
@@ -67,6 +98,11 @@ class Clients extends CI_Controller {
                         'placeholder' => 'Comment', 
                         'class' => 'form-control'
                     );
+        $type = array('name' => 'type', 
+                        'id' => 'type', 
+                        'type' => 'hidden',
+                        'value' => 'Loan'
+                    );
         $submit = array(
             'type'  => 'submit',
             'name'  => 'submit',
@@ -75,25 +111,16 @@ class Clients extends CI_Controller {
         );
 
         // Generate Information table
-        $this->table->set_heading('Information');
-        $this->table->add_row(array('ID', $profile['id']));
-        $this->table->add_row(array('Last Name', $profile['lastname']));
-        $this->table->add_row(array('First Name', $profile['firstname']));
-        $this->table->add_row(array('Address', $profile['address']));
-        $this->table->add_row(array('Telephone', $profile['telephone']));
-        // $this->table->add_row(array('&#x270e;', anchor(site_url().'/clients/update/'.$profile['id'], 'Edit', 'title="Edit"') ));
-        $template = array('table_open' => '<table class="table table-condensed table-striped myTable client-info-tbl">', 'heading_cell_start' => '<th colspan="2">');
-        $this->table->set_template($template);
-        $data['form'] = $this->table->generate();
+        $data['form'] = $this->client_information($id); 
 
         // Generate New Transaction form
-        $this->table->set_heading('New Transaction');
+        $this->table->set_heading('New Loan');
         $this->table->add_row(array('Date',form_open('clients/new_transaction/'.$id.'', $form).form_input($date)));
         $this->table->add_row(array('Amount',form_input($amount)));
         $this->table->add_row(array('Charge(%)',form_input($charge)));
         $this->table->add_row(array('Comment',form_input($comment)));
-        $this->table->add_row(array('',form_submit($submit).form_close()));
-        $template2 = array('table_open' => '<table class="table table-condensed myTable client-new-trans">', 'heading_cell_start' => '<th colspan="2">');
+        $this->table->add_row(array('',form_submit($type).form_submit($submit).form_close()));
+        $template2 = array('table_open' => '<table class="table table-condensed myTable client-new-loan">', 'heading_cell_start' => '<th colspan="2">');
         $this->table->set_template($template2);
         $data['form2'] = $this->table->generate();;
         
@@ -136,20 +163,10 @@ class Clients extends CI_Controller {
     public function transaction($c_id, $t_id) {
         $profile = $this->Client_model->get_clients($c_id);
         $fullname = $profile['firstname']." ".$profile['lastname'];
-
-        // Generate Information
-        $this->table->set_heading('Information');
-        $this->table->add_row(array('ID', $profile['id']));
-        $this->table->add_row(array('Last Name', $profile['lastname']));
-        $this->table->add_row(array('First Name', $profile['firstname']));
-        $this->table->add_row(array('Address', $profile['address']));
-        $this->table->add_row(array('Telephone', $profile['telephone']));
-        $template = array('table_open' => '<table class="table table-condensed table-striped myTable client-info-tbl">', 'heading_cell_start' => '<th colspan="2">');
-        $this->table->set_template($template);
-        $data['form'] = $this->table->generate();
+        $data['form'] = $this->client_information($c_id);
+        $data['form2'] = $this->loan_information($t_id);
 
         // Generate Transaction table 
-
         $transaction = $this->Client_model->transaction($t_id);
         if(null !== $transaction) {
 
@@ -195,4 +212,6 @@ class Clients extends CI_Controller {
             header("Location: ".site_url()."/clients/profile/".$client_id."?form2_alert=Failed");
         }
     }
+
+    
 }
