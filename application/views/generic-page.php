@@ -41,13 +41,13 @@
                 ?>
             </h3>
             <?php
-                if(isset($form)) {
-                    echo $form;
+                if(isset($form1)) {
+                    echo $form1;
                     echo validation_errors();
-                    if(isset($create_alert)) {
-                        echo $create_alert;
-                    }else if(null !== $this->input->get('create_alert')) {
-                        echo $this->input->get('create_alert');
+                    if(isset($form1_alert)) {
+                        echo $form1_alert;
+                    }else if(null !== $this->input->get('form1_alert')) {
+                        echo $this->input->get('form1_alert');
                     }
                 }
                 if(isset($form2)) {
@@ -57,6 +57,15 @@
                         echo $form2_alert;
                     }else if(null !== $this->input->get('form2_alert')) {
                         echo $this->input->get('form2_alert');
+                    }
+                }
+                if(isset($form3)) {
+                    echo $form3;
+                    echo validation_errors();
+                    if(isset($form3_alert)) {
+                        echo $form3_alert;
+                    }else if(null !== $this->input->get('form3_alert')) {
+                        echo $this->input->get('form3_alert');
                     }
                 }
             ?>

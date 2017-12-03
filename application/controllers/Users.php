@@ -88,7 +88,7 @@ class Users extends CI_Controller {
 						'class' => 'btn btn-cyan', 
 						'style' => ''
 					);
-		$data['form'] =  form_open('users', $form)
+		$data['form1'] = form_open('users', $form)
 						.form_input($username)
 						.form_input($email)
 						.form_input($password1)
@@ -137,7 +137,7 @@ class Users extends CI_Controller {
 
 		$template = array('table_open' => '<table class="table table-striped myTable">');
 		$this->table->set_template($template);
-		$data['form'] = $this->table->generate();
+		$data['form1'] = $this->table->generate();
 
 		$data['breadcrumbs'] =  breadcrumbs(array('users', $default_username));
         $data['table_header'] = "";
@@ -184,7 +184,7 @@ class Users extends CI_Controller {
 								$this->input->post('user_id')
 							);
 				if($data['update_user'] == 1) { // Database update success, refresh page, display alert msg, clear fields
-					header("Location: ".site_url('users/profile/').$id."?update_alert=Success");
+					header("Location: ".site_url('users/profile/').$id."?form1_alert=Success");
 				}else { // Database update failed, display alert msg, repopulate fields
 					$data['update_user'] = "Failed! Please try again.";
 					$default_username = set_value('username');
@@ -246,7 +246,7 @@ class Users extends CI_Controller {
 		
 		$template = array('table_open' => '<table class="table table-striped myTable">');
 		$this->table->set_template($template);
-		$data['form'] = $this->table->generate();
+		$data['form1'] = $this->table->generate();
 
 		$data['breadcrumbs'] =  breadcrumbs(array('users', $default_username));
         $data['table_header'] = "";

@@ -103,17 +103,22 @@
   font-weight: 600;
 }
 /* line 100, ../sass/main.scss */
-.myTable#client-transactions-table td:nth-child(3), .myTable#client-transactions-table td:nth-child(4), .myTable#client-transactions-table th:nth-child(3), .myTable#client-transactions-table th:nth-child(4) {
+.myTable.client-trans-tbl td:nth-child(4), .myTable.client-trans-tbl th:nth-child(4) {
   text-align: right;
 }
+/* line 105, ../sass/main.scss */
+.myTable.client-trans-tbl tr:last-child td {
+  font-weight: 600;
+  border-top: dashed 1px #3f939e;
+}
 
-/* line 106, ../sass/main.scss */
+/* line 112, ../sass/main.scss */
 .menu-bar {
   background-color: #3f939e;
   border: none;
   border-radius: 0;
 }
-/* line 112, ../sass/main.scss */
+/* line 118, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a {
   color: #fff;
   font-size: 14px;
@@ -121,32 +126,32 @@
   opacity: 0.7;
   text-transform: capitalize;
 }
-/* line 118, ../sass/main.scss */
+/* line 124, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a:hover, .menu-bar .menu-group .menu-list a:focus {
   color: #fff;
   opacity: 0.9;
 }
-/* line 123, ../sass/main.scss */
+/* line 129, ../sass/main.scss */
 .menu-bar .menu-group .menu-list.active a {
   opacity: 1;
   background-color: transparent;
 }
-/* line 132, ../sass/main.scss */
+/* line 138, ../sass/main.scss */
 .menu-bar .navbar-header .navbar-brand {
   color: #fff;
 }
-/* line 135, ../sass/main.scss */
+/* line 141, ../sass/main.scss */
 .menu-bar .navbar-header .icon-bar {
   background-color: #fff;
 }
 
-/* line 140, ../sass/main.scss */
+/* line 146, ../sass/main.scss */
 #navbar {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 144, ../sass/main.scss */
+/* line 150, ../sass/main.scss */
 .breadcrumb {
   text-transform: capitalize;
 }

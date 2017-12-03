@@ -11,7 +11,6 @@ function breadcrumbs($list) {
         }else {
             $bread .= "<li><a href='".site_url()."/".$list[$i]."'>".$list[$i]."</a></li>";
         }
-        
     }
     $bread .= "</ol>";
 
