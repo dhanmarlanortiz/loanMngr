@@ -150,3 +150,53 @@ $cyan: #3f939e;
 .breadcrumb {
     text-transform: capitalize;
 }
+
+// Loan form
+.client-loans-table {
+    width: 100%;
+    td {
+        width: 25%;
+        padding: 1px 10px;
+    }
+}
+
+.subtbl_end{
+    height: 20px;
+    border-top: solid 1px #000;
+}
+
+.transaction-th {
+    padding-top: 10px !important;
+}
+.total-payment-label {}
+.total-payment-data {}
+.interest-label {}
+.interest-data {}
+.balance-label {}
+.balance-data {}
+.loan-value-label {}
+.loan-value-data {}
+.transaction-no-label {}
+.transaction-no-data {}
+.date-label {}
+.date-data {}
+.amount-label {}
+.amount-data {}
+.status-label {}
+.status-data {}
+.transaction-th-date {}
+.transaction-th-amount {}
+.transaction-th-description {}
+
+.total-payment-label, .interest-label, .balance-label, .loan-value-label, .transaction-no-label, .date-label, .amount-label, .status-label, .transaction-th-date, .transaction-th-amount, .transaction-th-description {
+    font-weight: 600;
+}
+.total-payment-data, .interest-data, .balance-data, .loan-value-data, .transaction-th-amount, .transaction-td-amount {
+    text-align: right;
+}
+
+.total-payment-label, .total-payment-data {
+    border-top: dashed 1px #000000;
+}
+
+
