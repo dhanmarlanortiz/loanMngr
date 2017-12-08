@@ -8,6 +8,8 @@ $(document).ready(function() {
 } );
 
 
+//document.getElementsByTagName("H1")[0].setAttribute("class", "democlass");
+
 // $(document).ready(function() {
     
 //     $('#client-transactions-table tfoot th').each( function () {

@@ -178,63 +178,78 @@ class Clients extends CI_Controller {
                 // $forOdNextMonth = date('m d y', strtotime("+1 month", strtotime($occDate)));
                 $date = date_create($each_loan['date']);
 
-                $subtbl_start = array('data' => '', 'class' => 'subtbl_start', 'colspan' => 4);
+                $row_line = array('data' => '', 'class' => 'row-line', 'colspan' => 4);
+                $row_gap = array('data' => '', 'class' => 'row-gap', 'colspan' => 4);
+                $subtbl_start = array('data' => '', 'class' => 'subtbl-start', 'colspan' => 4);
+                $subtbl_end = array('data' => '', 'class' => 'subtbl-end', 'colspan' => 4);
                 $this->table->add_row(array($subtbl_start) );
-
 
                 $transaction_no_label = array('data' => 'Transaction No.: ', 'class' => 'transaction-no-label');
                 $transaction_no_data = array('data' => $loan_id, 'class' => 'transaction-no-data'); 
                 $date_label = array('data' => 'Loan Date: ', 'class' => 'date-label');
                 $date_data = array('data' => date_format($date, "M. d, Y"), 'class' => 'date-data'); 
-                $this->table->add_row(
-                    array($transaction_no_label, $transaction_no_data, $date_label, $date_data)
-                );
-
                 $amount_label = array('data' => 'Amount: ', 'class' => 'amount-label');
                 $amount_data = array('data' => number_format($loan_amount, 2), 'class' => 'amount-data'); 
                 $status_label = array('data' => 'Status: ', 'class' => 'status-label');
                 $status_data = array('data' => $status, 'class' => 'status-data'); 
+                
                 $this->table->add_row(
-                    array($amount_label, $amount_data, $status_label, $status_data)
+                    array($transaction_no_label, $transaction_no_data, $amount_label, $amount_data)
                 );
+
+                $this->table->add_row(
+                    array($date_label, $date_data, $status_label, $status_data)
+                );
+
 
                 $payments = $this->Client_model->get_payments($loan_id);
 
                 $trans_th_date = array('data' => 'Date', 'class' => 'transaction-th-date transaction-th');
-                $trans_th_amount = array('data' => 'Amount', 'class' => 'transaction-th-amount transaction-th');
+                $trans_th_amount = array('data' => 'Payment', 'class' => 'transaction-th-amount transaction-th');
+                $trans_th_interest = array('data' => 'Interest', 'class' => 'transaction-th-interest transaction-th');
                 $trans_th_desc = array('data' => 'Description', 'class' => 'transaction-th-description transaction-th');
                 $this->table->add_row(
-                    array($trans_th_date, $trans_th_amount, $trans_th_desc,'')
+                    array($trans_th_date, $trans_th_interest, $trans_th_amount, $trans_th_desc)
                 );
+                $this->table->add_row(array($row_line) );
 
                 if(null !== $payments) {
                     foreach ($payments as $each_payment) {
                         $trans_td_amount = array('data' => number_format($each_payment['amount'],2), 'class' => 'transaction-td-amount');
-                        $this->table->add_row(
-                            array($each_payment['date'], $trans_td_amount, $each_payment['description'], '')
-                        );
+                        
                         if($each_payment['description'] == 'Payment') {
                             $total_payment = $total_payment + $each_payment['amount'];
+                            $this->table->add_row(
+                                array($each_payment['date'], '', $trans_td_amount, $each_payment['description'])
+                            );
                         }
                         if($each_payment['description'] == 'Interest') {
                             $interest = $interest + $each_payment['amount'];
+                            $this->table->add_row(
+                                array($each_payment['date'], $trans_td_amount, '', $each_payment['description'])
+                            );
                         }
 
                     }
                 }
-
-                $total_payment_label = array('data' => 'Total Payment', 'class' => 'total-payment-label');
+                $this->table->add_row(array($row_line) );
+                
+                // Total payment
+                $total_payment_label = array('data' => 'Total', 'class' => 'total-payment-label');
                 $total_payment_data = array('data' => number_format($total_payment,2), 'class' => 'total-payment-data'); 
-                $this->table->add_row(array($total_payment_label,$total_payment_data,'','') );
-
-                $interest_label = array('data' => 'Total Interest', 'class' => 'interest-label');
+                
+                // Total interest
+                $interest_label = array('data' => 'Total', 'class' => 'interest-label');
                 $interest_data = array('data' => number_format($interest,2), 'class' => 'interest-data'); 
-                $this->table->add_row(array($interest_label,$interest_data,'','') );
+
+                // $this->table->add_row(array($total_payment_label,'',,'') );
+                $this->table->add_row(array($interest_label, $interest_data, $total_payment_data ,'') );
 
                 $balance = ($loan_amount + $interest)- $total_payment;
                 $balance_label = array('data' => 'Balance', 'class' => 'balance-label');
                 $balance_data = array('data' => number_format($balance,2), 'class' => 'balance-data'); 
 
+                $this->table->add_row(array($row_gap) );
                 $this->table->add_row(
                     array($balance_label,$balance_data,'','')
                 );
@@ -244,16 +259,14 @@ class Clients extends CI_Controller {
                 $loan_value_data = array('data' => number_format($loan_value,2), 'class' => 'loan-value-data'); 
                 $this->table->add_row(array($loan_value_label, $loan_value_data, '', '') );
                 
-                $subtbl_end = array('data' => '', 'class' => 'subtbl_end', 'colspan' => 4);
-                $this->table->add_row(array($subtbl_end) );
+                
+                $this->table->add_row(array($subtbl_end));
                 //update status
                 if($balance <= 0) {
                     $this->Client_model->updateLoanStatus($loan_id, 'Fully paid');
                 }
                 
             }
-
-
         }
         $loan_table = array('table_open' => '<table class="client-loans-table" id="">');
         // $this->table->set_heading('Transaction #', 'Date', 'Amount', 'Status', 'Action');

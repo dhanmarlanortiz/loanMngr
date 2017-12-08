@@ -33,7 +33,7 @@ class Welcome extends CI_Controller {
 		$email = array('name' => 'email', 
 					'id' => 'email', 
 					'value' => set_value('email'), 'maxlength' => '50', 
-					'placeholder' => 'admin123@admin.com', 
+					'placeholder' => 'Email address', 
 					'class' => 'form-control email', 
 					'style' => ''
 				);
@@ -41,7 +41,7 @@ class Welcome extends CI_Controller {
 					'id' => 'password', 
 					'type' => 'password', 
 					'maxlength' => '30', 
-					'placeholder' => 'admin123', 
+					'placeholder' => 'Password', 
 					'class' => 'form-control password', 
 					'size' => '30', 
 					'style' => ''

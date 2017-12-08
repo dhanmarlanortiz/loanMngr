@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2017 at 01:58 AM
+-- Generation Time: Dec 08, 2017 at 06:45 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -41,9 +41,7 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (`id`, `username`, `password`, `email`) VALUES
 (5, 'admin123', '$2y$10$S/QbPtbITtk2IKdWP7LSdezFZHrquHtzjWEDVyS..Sw3O7/vIQ./S', 'admin123@admin.com'),
-(6, 'test54322', '$2y$10$4F2TX1rWYK867ZMmrA2U9u81niVaYuSUXvjSHkOi5/da3egcKY.Cm', 'test54322@admin.com'),
-(7, 'testabcde', '$2y$10$ynDIQOqeZj0mjnDbW9Si3uehSme/tU7uBDwzACRCt2am4nUiBzJ.C', 'testabcde@testabcde.com'),
-(8, '123456789', '$2y$10$SaD6W6tpKEX5BIhhqSXzvu.yqVhoCTDhCh.RlVJTsgNoxgZAlSpB2', '123456789@123456789.com');
+(10, 'Dragon', '$2y$10$A5AdWQg2r0GQsk/8lI4b.e2E48fvzLItRZKlOil52EwlpwWOxfIAy', 'dragon@ortizlab.com');
 
 -- --------------------------------------------------------
 
@@ -89,6 +87,52 @@ INSERT INTO `clients` (`firstname`, `lastname`, `telephone`, `address`, `id`) VA
 ('Rosita', 'Legaspi', '', '', 23),
 ('Sali', 'Oro', '', '', 24);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loans`
+--
+
+CREATE TABLE `loans` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `rate` float NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Unpaid',
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `loan_id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `date` date NOT NULL,
+  `description` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `amount` float NOT NULL,
+  `charge` float NOT NULL,
+  `comment` varchar(50) DEFAULT NULL,
+  `type` varchar(10) NOT NULL,
+  `group_code` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -106,6 +150,24 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `loans`
+--
+ALTER TABLE `loans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -113,13 +175,31 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `loans`
+--
+ALTER TABLE `loans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

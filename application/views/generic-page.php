@@ -15,7 +15,7 @@
                 echo $navbar_left;
             ?>
             <ul class="nav navbar-nav navbar-right menu-group">
-                <li class="menu-list"><a href="<?php echo site_url('user/logout'); ?>">Logout</a></li>
+                <li class="menu-list"><a href="<?php echo site_url('users/logout'); ?>">Logout</a></li>
             </ul>
         </div>
     </div>
