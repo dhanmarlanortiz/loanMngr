@@ -163,12 +163,12 @@ class Clients extends CI_Controller {
         $loans = "";
         $loans = $this->Client_model->get_loans($client_id);
         if(null !== $loans) {
-            $total_payment = 0;
-            $balance = 0;
-            $interest = 0;
-            $status = "";
-            $loan_value = 0;
             foreach ($loans as $key => $each_loan) {
+                $total_payment = 0;
+                $balance = 0;
+                $interest = 0;
+                $status = "";
+                $loan_value = 0;
 
                 $loan_id = $each_loan['id'];
                 $loan_amount = $each_loan['amount'];
