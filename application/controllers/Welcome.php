@@ -51,7 +51,8 @@ class Welcome extends CI_Controller {
 					'value' => set_value('email'), 'maxlength' => '50', 
 					'placeholder' => 'Email address', 
 					'class' => 'form-control email', 
-					'style' => ''
+					'style' => '',
+					'autocomplete' => 'off'
 				);
 		$password = array('name' => 'password', 
 					'id' => 'password', 
@@ -60,7 +61,8 @@ class Welcome extends CI_Controller {
 					'placeholder' => 'Password', 
 					'class' => 'form-control password', 
 					'size' => '30', 
-					'style' => ''
+					'style' => '',
+					'autocomplete' => 'off'
 				);
 		$submit = array('name' => 'login', 
 					'id' => 'submit', 
@@ -68,7 +70,7 @@ class Welcome extends CI_Controller {
 					'class' => 'btn btn-primary submit', 
 					'style' => ''
 				);
-		$data['form'] =  form_open('welcome', $form).heading('<span>LB</span>LoanBoss', 1, 'class="page-header"')
+		$data['form'] =  form_open('welcome', $form).heading('<span>LB</span> LoanBoss', 1, 'class="page-header"')
 						.heading('Login', 5, 'class="form-sub"')
 						.form_input($email)
 						.form_input($password)

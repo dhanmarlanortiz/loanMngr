@@ -38,6 +38,9 @@ $cyan: #3f939e;
     border-radius: 5px;
     margin-top: 80px;
     .page-header {
+        @media (max-width: 500px) {
+            font-size: 32px;
+        }
         margin-bottom: 15px;
         font-size: 48px;
         color: #fff;

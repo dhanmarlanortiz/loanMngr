@@ -1,7 +1,7 @@
 <div class="home">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                 <h3 class="section-title">
                     Standing Loans
                 </h3>

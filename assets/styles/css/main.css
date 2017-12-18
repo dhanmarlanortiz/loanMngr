@@ -90,7 +90,13 @@
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
-/* line 45, ../sass/main.scss */
+@media (max-width: 500px) {
+  /* line 40, ../sass/main.scss */
+  .login-form .page-header {
+    font-size: 32px;
+  }
+}
+/* line 48, ../sass/main.scss */
 .login-form .page-header span {
   font-family: "Arial Black", Gadget, sans-serif;
   background-color: #3f939e;
@@ -100,7 +106,7 @@
   vertical-align: unset;
   margin-bottom: 0;
 }
-/* line 55, ../sass/main.scss */
+/* line 58, ../sass/main.scss */
 .login-form .form-sub {
   color: #ffff !important;
   font-size: 20px !important;
@@ -108,14 +114,14 @@
   opacity: 1 !important;
 }
 
-/* line 63, ../sass/main.scss */
+/* line 66, ../sass/main.scss */
 .login-form .form-sub, .user-form .form-sub {
   color: #444444;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   opacity: 0.6;
 }
-/* line 69, ../sass/main.scss */
+/* line 72, ../sass/main.scss */
 .login-form .email, .login-form .password, .login-form .username, .user-form .email, .user-form .password, .user-form .username {
   height: 45px;
   border: solid 1px #3f939e;
@@ -124,19 +130,19 @@
   background-size: contain;
   padding-left: 50px;
 }
-/* line 77, ../sass/main.scss */
+/* line 80, ../sass/main.scss */
 .login-form .email, .user-form .email {
   background-image: url("../images/icon-envelope.jpg");
 }
-/* line 80, ../sass/main.scss */
+/* line 83, ../sass/main.scss */
 .login-form .username, .user-form .username {
   background-image: url("../images/icon-user.jpg");
 }
-/* line 83, ../sass/main.scss */
+/* line 86, ../sass/main.scss */
 .login-form .password, .user-form .password {
   background-image: url("../images/icon-lock.jpg");
 }
-/* line 86, ../sass/main.scss */
+/* line 89, ../sass/main.scss */
 .login-form .submit, .user-form .submit {
   background-color: #3f939e;
   border: solid 1px #3f939e;
@@ -147,30 +153,30 @@
   font-size: 20px;
   text-transform: uppercase;
 }
-/* line 96, ../sass/main.scss */
+/* line 99, ../sass/main.scss */
 .login-form .submit:hover, .login-form .submit:focus, .user-form .submit:hover, .user-form .submit:focus {
   opacity: 0.8;
 }
-/* line 100, ../sass/main.scss */
+/* line 103, ../sass/main.scss */
 .login-form .btn-cyan, .login-form .btn-normal, .user-form .btn-cyan, .user-form .btn-normal {
   border: solid 1px #3f939e;
 }
-/* line 102, ../sass/main.scss */
+/* line 105, ../sass/main.scss */
 .login-form .btn-cyan:hover, .login-form .btn-normal:hover, .user-form .btn-cyan:hover, .user-form .btn-normal:hover {
   opacity: 0.8;
 }
-/* line 106, ../sass/main.scss */
+/* line 109, ../sass/main.scss */
 .login-form .btn-cyan, .user-form .btn-cyan {
   background-color: #3f939e;
   color: #fff;
 }
-/* line 110, ../sass/main.scss */
+/* line 113, ../sass/main.scss */
 .login-form .btn-normal, .user-form .btn-normal {
   background-color: #fff;
   color: #3f939e;
 }
 
-/* line 115, ../sass/main.scss */
+/* line 118, ../sass/main.scss */
 .page-header {
   color: #3f939e;
   font-family: Arial, Helvetica, sans-serif;
@@ -178,19 +184,19 @@
   margin-bottom: 30px;
 }
 
-/* line 121, ../sass/main.scss */
+/* line 124, ../sass/main.scss */
 .section-title {
   color: #3f939e;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 22px;
 }
 
-/* line 126, ../sass/main.scss */
+/* line 129, ../sass/main.scss */
 .myTable {
   border: dashed 1px #3f939e;
   margin-top: 15px;
 }
-/* line 131, ../sass/main.scss */
+/* line 134, ../sass/main.scss */
 .myTable thead tr th {
   font-size: 16px;
   color: #fff;
@@ -201,34 +207,34 @@
   padding-left: 10px;
   padding-right: 10px;
 }
-/* line 141, ../sass/main.scss */
+/* line 144, ../sass/main.scss */
 .myTable tbody tr td {
   border-top: 0;
   font-family: Arial, Helvetica, sans-serif;
   padding-left: 10px;
   padding-right: 10px;
 }
-/* line 149, ../sass/main.scss */
+/* line 152, ../sass/main.scss */
 .myTable.client-info-tbl td:nth-child(1), .myTable.client-new-loan td:nth-child(1), .myTable.loan-info-tbl td:nth-child(1) {
   font-weight: 600;
 }
-/* line 156, ../sass/main.scss */
+/* line 159, ../sass/main.scss */
 .myTable.client-trans-tbl td:nth-child(4), .myTable.client-trans-tbl th:nth-child(4) {
   text-align: right;
 }
-/* line 161, ../sass/main.scss */
+/* line 164, ../sass/main.scss */
 .myTable.client-trans-tbl tr:last-child td {
   font-weight: 600;
   border-top: dashed 1px #3f939e;
 }
 
-/* line 168, ../sass/main.scss */
+/* line 171, ../sass/main.scss */
 .menu-bar {
   background-color: #3f939e;
   border: none;
   border-radius: 0;
 }
-/* line 174, ../sass/main.scss */
+/* line 177, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a {
   color: #fff;
   font-size: 14px;
@@ -236,132 +242,132 @@
   opacity: 0.7;
   text-transform: capitalize;
 }
-/* line 180, ../sass/main.scss */
+/* line 183, ../sass/main.scss */
 .menu-bar .menu-group .menu-list a:hover, .menu-bar .menu-group .menu-list a:focus {
   color: #fff;
   opacity: 0.9;
 }
-/* line 185, ../sass/main.scss */
+/* line 188, ../sass/main.scss */
 .menu-bar .menu-group .menu-list.active a {
   opacity: 1;
   background-color: transparent;
 }
-/* line 194, ../sass/main.scss */
+/* line 197, ../sass/main.scss */
 .menu-bar .navbar-header .navbar-brand {
   color: #fff;
 }
-/* line 197, ../sass/main.scss */
+/* line 200, ../sass/main.scss */
 .menu-bar .navbar-header .icon-bar {
   background-color: #fff;
 }
 
-/* line 202, ../sass/main.scss */
+/* line 205, ../sass/main.scss */
 #navbar {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* line 206, ../sass/main.scss */
+/* line 209, ../sass/main.scss */
 .breadcrumb {
   text-transform: capitalize;
 }
 
-/* line 211, ../sass/main.scss */
+/* line 214, ../sass/main.scss */
 .client-loans-table {
   width: 500px;
   background-color: #f9f9f9;
   border-radius: 5px;
   padding: 10px;
 }
-/* line 216, ../sass/main.scss */
+/* line 219, ../sass/main.scss */
 .client-loans-table td {
   padding: 1px 10px;
   font-size: 14px;
 }
-/* line 219, ../sass/main.scss */
+/* line 222, ../sass/main.scss */
 .client-loans-table td:nth-child(1), .client-loans-table td:nth-child(4) {
   width: 120px;
 }
-/* line 222, ../sass/main.scss */
+/* line 225, ../sass/main.scss */
 .client-loans-table td:nth-child(2), .client-loans-table td:nth-child(3) {
   width: 100px;
 }
 
-/* line 230, ../sass/main.scss */
+/* line 233, ../sass/main.scss */
 .row-line {
   height: 1px;
   background-color: #ccc;
 }
 
-/* line 234, ../sass/main.scss */
+/* line 237, ../sass/main.scss */
 .row-gap {
   height: 10px;
   background-color: #f9f9f9;
 }
 
-/* line 238, ../sass/main.scss */
+/* line 241, ../sass/main.scss */
 .subtbl-end {
   height: 30px;
   background-color: #fff;
 }
 
-/* line 243, ../sass/main.scss */
+/* line 246, ../sass/main.scss */
 .transaction-th {
   padding-top: 10px !important;
 }
 
-/* line 266, ../sass/main.scss */
+/* line 269, ../sass/main.scss */
 .total-payment-label, .balance-label, .loan-value-label, .transaction-th-date, .transaction-th-interest, .transaction-th-amount, .transaction-th-description {
   font-weight: 600;
 }
 
-/* line 269, ../sass/main.scss */
+/* line 272, ../sass/main.scss */
 .total-payment-data, .interest-data, .balance-data, .loan-value-data, .transaction-th-interest, .transaction-th-amount, .transaction-td-amount {
   text-align: right;
 }
 
-/* line 278, ../sass/main.scss */
+/* line 281, ../sass/main.scss */
 .transaction-no-label {
   padding-top: 20px !important;
   font-weight: 600;
 }
 
-/* line 282, ../sass/main.scss */
+/* line 285, ../sass/main.scss */
 .transaction-no-data {
   padding-top: 20px !important;
   font-weight: 600;
   font-size: 16px;
 }
 
-/* line 291, ../sass/main.scss */
+/* line 294, ../sass/main.scss */
 .amount-label {
   padding-top: 20px !important;
   text-align: right;
 }
 
-/* line 295, ../sass/main.scss */
+/* line 298, ../sass/main.scss */
 .amount-data {
   padding-top: 20px !important;
   font-size: 16px;
   font-weight: 600;
 }
 
-/* line 300, ../sass/main.scss */
+/* line 303, ../sass/main.scss */
 .status-label {
   text-align: right;
 }
 
-/* line 303, ../sass/main.scss */
+/* line 306, ../sass/main.scss */
 .status-data {
   text-transform: uppercase;
 }
 
-/* line 308, ../sass/main.scss */
+/* line 311, ../sass/main.scss */
 .interest-data {
   font-weight: 600;
 }
 
-/* line 311, ../sass/main.scss */
+/* line 314, ../sass/main.scss */
 .total-payment-data {
   font-weight: 600;
 }
