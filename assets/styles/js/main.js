@@ -5,6 +5,7 @@ $(document).ready(function() {
          "dom": '<"top">rt<"bottom"flip><"clear">',
          // "info": false
     });
+    $('.standing-loans').DataTable();
 } );
 
 

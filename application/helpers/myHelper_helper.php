@@ -19,7 +19,7 @@ function breadcrumbs($list) {
 
 function navbar_left($controller) {
     $menu = "";
-    $item = array('home', 'clients', 'users');
+    $item = array('home', 'clients', 'Investments', 'users');
     $size = sizeof($item);
     $menu .= "<ul class='nav navbar-nav menu-group'>";
 

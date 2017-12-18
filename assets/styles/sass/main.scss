@@ -3,6 +3,62 @@ $black: "Arial Black", Gadget, sans-serif;
 $blue: #136396;
 $cyan: #3f939e;
 
+@import "modules/home";
+.pre-head {
+    color: #fff;
+    font-size: 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 20px 0px;
+    line-height: 1em;
+}
+.pre-head span {
+    color: #30c5bd;
+}
+.pre-head2 {
+    color: #f1f1f1;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+.login-page {
+    background-image: url('../images/writing-sationary_4460x44_opt.jpg');
+    background-color: #000000;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+.login-form {
+    background-color: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 80px;
+    .page-header {
+        margin-bottom: 15px;
+        font-size: 48px;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        span {
+            font-family: "Arial Black", Gadget, sans-serif;
+            background-color: #3f939e;
+            border-radius: 5px;
+            padding: 0 20px 0 10px;
+            letter-spacing: -10px;
+            vertical-align: unset;
+            margin-bottom: 0;
+        }
+    }
+    .form-sub {
+        color: #ffff !important;
+        font-size: 20px !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+    }
+}
 .login-form, .user-form {
     .form-sub {
         color: #444444;

@@ -9,6 +9,21 @@ class Welcome extends CI_Controller {
 		$this->load->model('User_model');
 	}
 
+	public function send_email() {
+		$from_uname = $this->session->userdata('uname');
+		$from_email = $this->session->userdata('email'); 
+		$to_email = "dhan.marlan.ortiz@gmail.com"; 
+
+		$datestring = '%F %d %Y - %h:%i %A';
+		$time = time();
+
+		$this->email->from($from_email, 'LoanBoss automated login notifer'); 
+		$this->email->to($to_email);
+		$this->email->subject('Loan Boss login'); 
+		$this->email->message($from_uname.' has logged in to the system ('.mdate($datestring, $time).')'); 
+		$this->email->send();
+	}
+
 	public function index() {
 		if(null !== $this->input->post('login')) {
 			/* Input validation */
@@ -21,6 +36,7 @@ class Welcome extends CI_Controller {
 				/* Check credentials */
 				$data['check_user'] = $this->User_model->check_user($email, $password);
 				if($data['check_user']) {
+					$this->send_email();
 					header("Location: ".site_url('home').""); // Redirect to admin page
 				}else {
 					$data['check_user'] = "Invalid username/password."; // Create error message
@@ -52,8 +68,8 @@ class Welcome extends CI_Controller {
 					'class' => 'btn btn-primary submit', 
 					'style' => ''
 				);
-		$data['form'] =  form_open('welcome', $form).heading('Login', 1, 'class="page-header"')
-						.heading('Please sign in to your account', 5, 'class="form-sub"')
+		$data['form'] =  form_open('welcome', $form).heading('<span>LB</span>LoanBoss', 1, 'class="page-header"')
+						.heading('Login', 5, 'class="form-sub"')
 						.form_input($email)
 						.form_input($password)
 						.form_submit($submit)

@@ -12,8 +12,10 @@ class User_model extends CI_Model {
 		if(password_verify($password, $result['password'])) { // check decrypt password
 			$user_id = $result['id'];
 			$username = $result['username'];
+			$email = $result['email'];
 			$this->session->set_userdata('uid', $user_id); // create session id
 			$this->session->set_userdata('uname', $username); // create session username
+			$this->session->set_userdata('email', $email); // create session email
 			return $user_id;
 		}else {
 			return;

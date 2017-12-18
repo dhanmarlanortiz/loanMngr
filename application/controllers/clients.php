@@ -276,7 +276,6 @@ class Clients extends CI_Controller {
         return $table;
     }
 
-
     public function profile($client_id) {
         $profile = $this->Client_model->get_clients($client_id);
         $fullname = $profile['firstname']." ".$profile['lastname'];

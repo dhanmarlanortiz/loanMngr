@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Investments extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -15,12 +15,10 @@ class Home extends CI_Controller {
     }
 
     public function index() {
-        $data['breadcrumbs'] = breadcrumbs(array('home'));
+        $data['breadcrumbs'] = breadcrumbs(array('Investments'));
         $data['navbar_left'] = navbar_left($this->uri->segment(1));
-        $data['standing_loans'] = $this->Client_model->get_unpaid();
         $this->load->view('header');
         $this->load->view('generic-page', $data);
-        $this->load->view('home', $data);
         $this->load->view('footer');
     }
 

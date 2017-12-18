@@ -71,6 +71,17 @@ class Client_model extends CI_Model {
 		return $result;
 	}
 
+	public function get_unpaid() {
+		$this->db->select('c.firstname, c.lastname, l.amount, l.date, l.id, l.client_id');
+		$this->db->from('clients c, loans l');
+		$this->db->where('l.status', 'Unpaid');
+		$this->db->where('c.id = l.client_id');
+		$this->db->order_by('date', 'ASC');
+		$query = $this->db->get();
+		$result = $query->result_array();
+		return $result;
+	}
+
 	public function add_payment() {
 		$u_in = $this->input->post();
 		$data = array(
