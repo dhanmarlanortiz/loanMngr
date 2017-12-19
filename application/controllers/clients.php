@@ -78,6 +78,13 @@ class Clients extends CI_Controller {
                         'class' => 'form-control', 
                         'required' => true
                     );
+        $code = array('name' => 'code', 
+                        'id' => 'code',
+                        'type'  => 'text',
+                        'placeholder' => 'Code', 
+                        'class' => 'form-control', 
+                        'required' => true
+                    );
         $amount = array('name' => 'amount', 
                         'id' => 'amount', 
                         'type' => 'number',
@@ -100,6 +107,7 @@ class Clients extends CI_Controller {
         );
         $this->table->set_heading('Add Loan');
         $this->table->add_row(array('Date',form_open('clients/add_loan/'.$client_id.'', $form).form_input($date)));
+        $this->table->add_row(array('Transaction #',form_input($code)));
         $this->table->add_row(array('Amount',form_input($amount)));
         $this->table->add_row(array('Rate (%)',form_input($rate)));
         $this->table->add_row(array('',form_submit($submit).form_close()));
@@ -118,8 +126,8 @@ class Clients extends CI_Controller {
 
         if(null !== $loans) {
             foreach ($loans as $key => $each_loan) {
-                $options[$each_loan['id']] = $each_loan['id'];
-            $transaction_options = $options;
+                $options[$each_loan['code']] = $each_loan['code'];
+                $transaction_options = $options;
             }
         }
 
@@ -170,7 +178,8 @@ class Clients extends CI_Controller {
                 $status = "";
                 $loan_value = 0;
 
-                $loan_id = $each_loan['id'];
+                // $loan_id = $each_loan['id'];
+                $loan_id = $each_loan['code'];
                 $loan_amount = $each_loan['amount'];
                 $status = $each_loan['status'];
 

@@ -59,6 +59,7 @@ class Client_model extends CI_Model {
 			'date' => $u_in['date'],
 			'amount' => $u_in['amount'],
 			'rate' => $u_in['rate'],
+			'code' => $u_in['code']
 		);
 		$query = $this->db->insert('loans', $data);
 		return $this->db->affected_rows();
@@ -85,7 +86,7 @@ class Client_model extends CI_Model {
 	public function add_payment() {
 		$u_in = $this->input->post();
 		$data = array(
-			'loan_id' => $u_in['loan_id'],
+			'loan_id' => $u_in['code'],
 			'date' => $u_in['date'],
 			'amount' => $u_in['amount'],
 			'description' => $u_in['description']
